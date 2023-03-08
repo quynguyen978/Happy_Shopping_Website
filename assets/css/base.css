@@ -1,0 +1,218 @@
+:root {
+    --primary-color:#EE4D2D;
+    --white-color: rgba(255, 255, 255, 0.981);
+    --black-color: rgb(27, 10, 10);
+    --text-color: #333333;
+    --border-color: #dbdbdb;
+    --start-gold-color: #FFCE3E;
+}
+
+* {
+    box-sizing: inherit;
+    padding-left: 0;
+}
+
+html {
+    /* 62.5% will be 10 pixes */
+    /* 100% will be 16 pixes */
+    font-size:62.5%;
+    line-height: 1.6rem;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+
+/* apply responsive */
+.grid {
+    /* if screen is over 1400px, width will be 1400px.  */
+    /* if screen is less than 1400px, width will be less than 1400px */
+    width: 1400px;
+    max-width: 100%;
+    /* top, bottom =0, left, right= auto */
+    /* will be set up center if inside other box */
+    margin: 0 auto;
+}
+/* this function use when we don't want to use the width: 1200 in the above function */
+
+.grid__full-width {
+    width: 100%
+}
+
+.grid__row {
+    /* items will be set up in a horizontal line */
+    display: flex;
+    /* if staffs is over a line, it will be entered to a new line */
+    flex-wrap: wrap;
+    margin-left: -5px;
+    margin-right: -5px;
+}
+
+/* Text */
+.grid__column-2 {
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 16.6667%;
+}
+
+.grid__colume-2-4 {
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 20%;
+}
+
+.grid__column-10 {
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 83.3334%;
+}
+
+/* Animation */
+@keyframes fadeIn{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+@keyframes growth {
+    from {
+        transform: scale(var(--growth-from));
+    }
+    to {
+        transform: scale(var(--growth-to));
+    }
+}
+.modal{
+    position: fixed;
+    top: 0;
+    right:0;
+    bottom:0;
+    left: 0;
+    display: flex;
+    animation: fadeIn linear 0.2s;
+}
+
+.modal__overlay{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal__body{
+    /* it transforms from 70% to 100% */
+    --growth-from: 0.7;
+    --growth-to: 1;
+    /* width and height are not nescesery */
+    margin: auto;
+    position: relative;
+    /* using z-index to cover the other which has lower index */
+    z-index:1;
+    animation: growth linear 0.3s;
+}
+
+/* Button style */
+.btn{
+    min-width: 124px;
+    height: 34px;
+    border: none;
+    text-decoration: none;
+    border-radius: 2px;
+    font-size: 1.5rem;
+    padding: 0;
+    cursor: pointer;
+    /* display: inline-flex; */
+    color: var(--text-color);
+}
+
+.btn.auth-form__control-back:hover{
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.btn.btn--primary{
+    color: var(--white-color);
+    background-color: var(--primary-color);
+}
+
+.btn.btn--disable{
+    cursor: default;
+    background-color: #999;
+}
+
+/* Selection */
+.select-input {
+    min-width: 200px;
+    height: 34px;
+    display: flex;
+    padding: 0 10px;
+    font-size: 1.4rem;
+    color: var(--text-color);
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 2px;
+    background-color: var(--white-color);
+    position: relative;
+}
+
+.select-input__list {
+    display: block;
+    position: absolute;
+    top:60%;
+    left: 0;
+    right: 0;
+    background-color: var(--white-color);
+    border-radius: 2px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    list-style: none;
+    padding: 8px 16px;
+    display: none;
+    z-index: 1;
+}
+
+.select-input__item .select-input__link{
+    display: block;
+    padding: 4px 0 4px 8px;
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.select-input:hover .select-input__list {
+    display: block;
+}
+
+.select-input__link:hover{
+    color:var(--primary-color);
+}
+
+.pagination {
+    display: flex;
+    list-style: none;
+    font-size: 2rem;
+    justify-content: center;
+}
+
+.pagination-item-link {
+    /* tag 'a' doesnt have display: block. So, we have to set up each time */
+    --height: 30px;
+    display: block;
+    text-decoration: none;
+    color: #949494;
+    min-width: 40px;
+    height: var(--height);
+    text-align: center;
+    line-height: var(--height);
+    border-radius: 2px;
+}
+
+.pagination-item-link:hover {
+    color:var(--primary-color);
+}
+.pagination-item--active .pagination-item-link {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+.pagination-item-icon {
+
+}
